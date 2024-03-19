@@ -1,0 +1,826 @@
+html {
+    font-size: 27px;
+    width: 100%;
+}
+
+body {
+    background-color: burlywood;
+    background-image: url("tlo.jpg");
+    background-size: cover;
+    margin-top: 0;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    margin: 0;
+}
+
+#kontener {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px 5px 150px black;
+}
+
+/* panel gorny */
+#header {
+    width: 100%;
+    min-height: 4rem;
+    background-color: #f8efe5;
+    font-family: 'Cinzel', serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10;
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+
+#logo {
+    height: 100%;
+    width: auto;
+}
+
+#logo img {
+    height: 3rem;
+    width: auto;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.menu a {
+    text-align: center;
+    text-decoration: none;
+    color: rgb(63, 45, 34);
+}
+
+.menu:hover {
+    transition: transform 0.3s;
+    transform: scale(1.1);
+}
+
+.menu#active {
+    text-decoration: underline;
+    font-size: 1.4rem;
+}
+
+#duze {
+    font-size: 1.7rem;
+}
+
+/* INDEX */
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+#center {
+    position: relative;
+}
+
+#center img {
+    width: 100%;
+    display: block;
+}
+
+.overlay-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #000000;
+    /* Biały tekst */
+    font-size: 1.4rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background: #f9edde80;
+    border-radius: 50px;
+}
+
+.overlay-buttons {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.oval-button {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 20px;
+    padding: 20px 80px;
+    text-decoration: none;
+    color: #090808;
+    background: #dcd0c0;
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.oval-button:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+    background-color: #ccc4bc;
+}
+
+.social-media {
+    width: 70%;
+    margin-top: 0;
+    transform: scale(1.2);
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.social-media a {
+    margin: 0 10px;
+    /* Odległość między ikonami */
+    display: inline-block;
+}
+
+.social-media img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s;
+    padding: 25px;
+    padding-top: 0;
+    opacity: 0.8;
+}
+
+.social-media a:hover img {
+    transform: scale(1.1);
+}
+
+#rotating-image {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+#rotating-image.fade {
+    opacity: 0;
+}
+
+/* KONTAKT */
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+#center-kontakt {
+    display: flex;
+    flex-wrap: wrap;
+    /* Pozwala elementom przenosić się na nową linię */
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: #f3fbfe;
+    font-family: 'Cinzel', serif;
+}
+
+#tumnie {
+    text-align: center;
+}
+
+#prawo {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    /* Domyślnie zajmuje całą szerokość na małych ekranach */
+    max-width: 480px;
+    /* Maksymalna szerokość na duże ekrany */
+    margin: 0 auto;
+
+}
+
+#formularz-kontaktowy {
+    width: 100%;
+    max-width: 480px;
+    /* lub inna szerokość w zależności od potrzeb */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#formularz-kontaktowy .input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    /* odstęp między inputami */
+}
+
+#formularz-kontaktowy .input-group input {
+    width: calc(50% - 10px);
+    /* odlicza gap z szerokości */
+}
+
+#formularz-kontaktowy input,
+#formularz-kontaktowy textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    /* odstęp między polami */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#formularz-kontaktowy textarea {
+    height: 150px;
+    /* określa wysokość textarea */
+}
+
+#formularz-kontaktowy .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    /* odstęp między checkboxem a przyciskiem */
+}
+
+#formularz-kontaktowy .checkbox-group input {
+    margin-right: 10px;
+}
+
+#formularz-kontaktowy button {
+    width: 100%;
+    padding: 10px;
+    border-color: #958f8f;
+    border-radius: 5px;
+    background-color: rgb(201, 189, 174);
+    /* kolor tła przycisku */
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#formularz-kontaktowy button:hover {
+    background-color: #534f4f;
+    color: white;
+    transition: 1s;
+}
+
+label {
+    font-size: 10px;
+}
+
+.error-label {
+    color: red;
+}
+
+#lewo {
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+#kontakt-info1 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#mapa iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 480px;
+    height: 350px;
+    border: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+#kontakt-info2 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.tytul,
+.tresc {
+    font-size: 0.7rem;
+    margin: 0;
+    display: block;
+    /* Zapewnia, że elementy będą pod sobą */
+}
+
+#formularz {
+    width: 50%;
+}
+
+/* KURSY */
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+#center-kursy {
+    font-family: 'Cinzel', serif;
+    display: flex;
+    flex-direction: column;
+    /* Ustawienie kierunku flex na kolumnę */
+    justify-content: center;
+    /* Wyrównanie pionowe na środku */
+    align-items: center;
+    /* Wyrównanie poziome na środku */
+    width: 100%;
+    background-color: #f3fbfe;
+    height: 100%;
+    /* Ustawienie wysokości na 100% */
+}
+
+.header-text {
+    width: 100%;
+    /* Szerokość na całą szerokość kontenera */
+    text-align: center;
+    margin: 20px 100px 0px 100px;
+    font-size: 0.8rem;
+    /* Dostosuj rozmiar czcionki według potrzeb */
+
+}
+
+.header-text strong {
+    font-size: 0.9rem;
+    display: block;
+}
+
+.header-text a {
+    text-decoration: underline;
+
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    /* Możesz dostosować szerokość kontenera kart */
+    margin: 0;
+    /* Usunięcie marginesów zewnętrznych */
+    margin-bottom: 20px;
+}
+
+.card {
+    width: calc(33.33% - 50px);
+    min-width: 200px;
+    height: 250px;
+    margin: 20px;
+    /* margin-bottom: 50px; */
+    perspective: 1000px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+
+}
+
+.card:hover {
+    box-shadow: none;
+    transition: 0.4s;
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card img {
+    display: block;
+    object-fit: cover;
+}
+
+.card-front {
+    background-color: #fff;
+}
+
+.card-back {
+    background-color: #f1f1f1;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.card-back img {
+    width: 3rem;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.card-back a:hover img {
+    transform: scale(1.1);
+}
+
+.card.flipped .card-front {
+    transform: rotateY(-180deg);
+}
+
+.card.flipped .card-back {
+    transform: rotateY(0deg);
+}
+
+.card-front img {
+    width: 100%;
+    /* Dopasowuje obraz do szerokości karty */
+    height: 100%;
+    /* Dopasowuje obraz do wysokości karty */
+    object-fit: cover;
+    /* Zapewnia, że obraz pokryje całą powierzchnię bez zniekształceń */
+}
+
+.card-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Półprzezroczyste tło */
+    color: white;
+    text-align: center;
+
+}
+
+/* KURSY */
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.kontener-biografia {
+    width: 100%;
+    margin: 0;
+}
+
+.center-biografia {
+    background-color: rgba(243, 251, 254, 0.7);
+    width: 100%;
+}
+
+.slogan {
+    width: 100%;
+    min-height: 4rem;
+    background-color: #f8efe5;
+    font-family: 'Cinzel', serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.7), 0px 10px 20px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 2;
+    font-size: 1.2rem;
+}
+
+.fragment {
+    width: 100%;
+    font-family: 'Cinzel', serif;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.postac {
+    position: relative;
+    margin-top: 3rem;
+    margin-left: 2rem;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.postac img {
+    max-width: 17rem;
+    max-height: 100%;
+    display: block;
+}
+
+#postac1 {
+    animation: slideIn 3s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+#postac2 {
+    transform: translateY(10rem);
+    opacity: 0;
+    transition: transform 2s, opacity 2s;
+}
+
+#postac3 {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.opis {
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-family: 'Cinzel', serif;
+    width: 65%;
+    padding: 2rem;
+    line-height: 1.7rem;
+    letter-spacing: 1px;
+    word-spacing: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#opis1 {
+    animation: slideIn2 3s ease forwards;
+}
+
+@keyframes slideIn2 {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+#opis2 {
+
+    transform: translateY(-500px);
+    opacity: 0;
+    transition: transform 2s, opacity 2s;
+}
+
+#opis3 {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 1.5s ease, opacity 1s ease;
+}
+
+#slogan4 a {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+#slogan4 img {
+    width: 1.8rem;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+#slogan4 a:hover img {
+    transform: scale(1.1);
+}
+
+#back-to-top {
+    padding: 20px 40px;
+    background-color: #5d5347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    z-index: 1000;
+}
+
+#back-to-top:hover {
+    opacity: 1;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+#kontener-jak {
+    width: 100%;
+    margin: 0;
+    box-shadow: 1px 5px 150px black;
+    background-color: rgba(243, 251, 254, 0.7);
+}
+
+.baner {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.baner img {
+    display: block;
+}
+
+#header-jak {
+    width: 100%;
+    min-height: 4rem;
+    background-color: #f8efe5;
+    font-family: 'Cinzel', serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.4), 0px 10px 20px rgba(0, 0, 0, 0.7);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.postac-jak {
+    position: relative;
+    margin: 3rem;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 0;
+    overflow: hidden;
+
+}
+
+.postac-jak img {
+    max-width: 17rem;
+    max-height: 100%;
+    display: block;
+    border-radius: 8rem;
+    opacity: 0.8;
+}
+
+.slogan-kontakt {
+    width: 100%;
+    min-height: 4rem;
+    background-color: #f8efe5;
+    font-family: 'Cinzel', serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.7), 0px 10px 20px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 2;
+    font-size: 1.2rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.slogan-kontakt a {
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(63, 45, 34);
+}
+
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f8efe5;
+    color: black;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+<div id="header">
+            <div id="logo">
+                <img src="logoorg.png" alt="logo">
+            </div>
+            <div id="menu" class="active"><a href="index.html" id="duze">Witaj!</a></div>
+            <div id="menu"><a href="kontakt.html">Kontakt</a></div>
+            <div id="menu"><a href="kursy.html">Kursy</a></div>
+            <div id="menu"><a href="omnie.html">O mnie</a></div>
+        </div> 
+        
+*/
+
+
+
+
+
+/* koniec srodka poczatek stopki */
+
+/* responsywnosc */
+@media screen and (max-width: 1000px) {
+    #kontener {
+        width: 100%;
+    }
+
+    #menu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    nav a {
+        margin: 0 !important;
+    }
+
+}
+
+
+
+
+
+
+/*
+overlay effect 

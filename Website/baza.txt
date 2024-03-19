@@ -1,0 +1,21 @@
+CREATE TABLE Uzytkownicy (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    imie VARCHAR(255) NOT NULL,
+    nazwisko VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telefon VARCHAR(255)
+);
+
+CREATE TABLE Wiadomosci (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_uzytkownika INT,
+    tresc TEXT NOT NULL,
+    FOREIGN KEY (id_uzytkownika) REFERENCES Uzytkownicy(id)
+);
+
+CREATE TABLE Pliki (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_uzytkownika INT,
+    nazwa_pliku VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_uzytkownika) REFERENCES Uzytkownicy(id)
+);

@@ -1,0 +1,231 @@
+CREATE OR REPLACE TYPE adres_type;
+/
+
+CREATE OR REPLACE TYPE adres_type AS OBJECT (
+        miasto       VARCHAR2(50),
+        ulica        VARCHAR2(50),
+        nr_domu      VARCHAR2(20),
+        kod_pocztowy VARCHAR2(10)
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE skladanie_type AS OBJECT (
+        budzet         INTEGER,
+        zastosowania   VARCHAR2(200),
+        ilosc          INTEGER,
+        czesci_wlasne  VARCHAR2(100),
+        oprogramowanie VARCHAR2(100),
+        preferencje    VARCHAR2(200)
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE skladanie_type_array IS
+    VARRAY(10) OF skladanie_type;
+/
+
+CREATE OR REPLACE TYPE naprawa_type AS OBJECT (
+        rodzaj_sprzetu    VARCHAR2(100),
+        zgloszony_problem VARCHAR2(200),
+        model             VARCHAR2(50),
+        uwagi             CLOB
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE naprawa_type_array IS
+    VARRAY(10) OF naprawa_type;
+/
+
+CREATE OR REPLACE TYPE osoba_type AS OBJECT (
+        imie     VARCHAR2(30),
+        nazwisko VARCHAR2(30)
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE serwisant_type UNDER osoba_type (
+        data_dolaczenia DATE,
+        specjalizacja   VARCHAR2(50)
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE serwisant_type_array IS
+    VARRAY(10) OF serwisant_type;
+/
+
+CREATE OR REPLACE TYPE samochod_type AS OBJECT (
+        marka               VARCHAR2(20),
+        model               VARCHAR2(20),
+        numer_rejestracyjny VARCHAR2(20),
+        kolor               VARCHAR2(20),
+        przeglad            DATE,
+        ubezpieczenie       DATE
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE samochod_ntab IS
+    TABLE OF samochod_type;
+/
+
+CREATE OR REPLACE TYPE zlecenie_type AS OBJECT (
+        termin_wizyty        DATE,
+        data_utworzenia      DATE,
+        status               VARCHAR2(20),
+        array_skladanie_type skladanie_type_array,
+        array_naprawa_type   naprawa_type_array,
+        array_serwisant_type serwisant_type_array,
+        array_samochod_type  samochod_ntab
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE zlecenie_ntab IS
+    TABLE OF zlecenie_type;
+/
+
+CREATE OR REPLACE TYPE faktura_type AS OBJECT (
+        id_faktury          INTEGER,
+        data_wystawienia    DATE,
+        termin_platnosci    DATE,
+        kwota               INTEGER,
+        array_zlecenie_type zlecenie_ntab
+) NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE zlecenie_type_array IS TABLE OF zlecenie_type;
+/
+
+CREATE OR REPLACE TYPE adres_type_array IS TABLE OF adres_type;
+/
+
+
+
+CREATE OR REPLACE TYPE klient_type UNDER osoba_type (
+        nr_tel              VARCHAR2(20),
+        email               VARCHAR2(40),
+        nazwa_firmy         VARCHAR2(100),
+        nip                 VARCHAR2(50),
+        array_adres_type    adres_type_array,
+        array_zlecenie_type zlecenie_type_array
+) NOT FINAL;
+/
+
+-- predefined type, no DDL - MDSYS.SDO_GEOMETRY
+
+CREATE OR REPLACE TYPE samochod_type_array IS
+    VARRAY(10) OF samochod_type;
+/
+
+CREATE OR REPLACE TYPE serwis_type AS OBJECT (
+        id_serwisu           INTEGER,
+        kierownik            VARCHAR2(100),
+        uslugi               VARCHAR2(100),
+        array_serwisant_type serwisant_type_array,
+        array_samochod_type  samochod_type_array,
+        ref_adres_type       REF adres_type
+) NOT FINAL;
+/
+
+-- predefined type, no DDL - XMLTYPE
+
+CREATE OR REPLACE TYPE faktura_type_array IS
+    VARRAY(10) OF faktura_type;
+/
+
+CREATE TABLE adres OF adres_type (
+    miasto NOT NULL,
+    ulica NOT NULL,
+    nr_domu NOT NULL,
+    kod_pocztowy NOT NULL
+)
+LOGGING;
+
+--CREATE OR REPLACE TYPE zlecenie_type_array IS TABLE OF zlecenie_type;
+--/
+
+CREATE TABLE faktura OF faktura_type (
+    id_faktury NOT NULL,
+    data_wystawienia NOT NULL,
+    termin_platnosci NOT NULL,
+    kwota NOT NULL,
+    CONSTRAINT faktura_pk PRIMARY KEY ( id_faktury )
+)
+LOGGING
+    
+NESTED TABLE array_zlecenie_type STORE IN faktura_array_zlecenie_type;
+
+CREATE TABLE klient OF klient_type (
+    imie NOT NULL,
+    nazwisko NOT NULL,
+    nr_tel NOT NULL
+)
+LOGGING;
+
+CREATE TABLE naprawa OF naprawa_type (
+    rodzaj_sprzetu NOT NULL,
+    zgloszony_problem NOT NULL,
+    model NOT NULL
+)
+LOGGING;
+
+CREATE TABLE samochod OF samochod_type (
+    marka NOT NULL,
+    model NOT NULL,
+    numer_rejestracyjny NOT NULL,
+    kolor NOT NULL,
+    przeglad NOT NULL,
+    ubezpieczenie NOT NULL
+)
+LOGGING;
+
+CREATE TABLE serwis OF serwis_type (
+    id_serwisu NOT NULL,
+    kierownik NOT NULL,
+    uslugi NOT NULL,
+    CONSTRAINT serwis_pk PRIMARY KEY ( id_serwisu )
+)
+LOGGING;
+
+CREATE TABLE serwisant OF serwisant_type (
+    imie NOT NULL,
+    nazwisko NOT NULL,
+    data_dolaczenia NOT NULL
+)
+LOGGING;
+
+CREATE TABLE skladanie OF skladanie_type (
+    budzet NOT NULL,
+    zastosowania NOT NULL
+)
+LOGGING;
+
+CREATE TABLE zlecenie OF zlecenie_type (
+    data_utworzenia NOT NULL,
+    status NOT NULL
+)
+LOGGING
+NESTED TABLE array_samochod_type 
+--  WARNING: Using column name as default storage_table name for nested column array_samochod_type 
+ STORE AS array_samochod_type;
+
+
+
+
+
+
+
+
+CREATE TABLE faktura OF faktura_type (
+    id_faktury NOT NULL,
+    data_wystawienia NOT NULL,
+    termin_platnosci NOT NULL,
+    kwota NOT NULL,
+    CONSTRAINT faktura_pk PRIMARY KEY ( id_faktury )
+)
+LOGGING
+    
+NESTED TABLE array_zlecenie_type STORE AS ntab_zlecenie(NESTED TABLE array_samochod_type STORE AS ntab_samochod);
+
+CREATE TABLE klient OF klient_type (
+    imie NOT NULL,
+    nazwisko NOT NULL,
+    nr_tel NOT NULL
+)
+LOGGING;

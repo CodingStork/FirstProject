@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fizjoterapia</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
+
+
+
+
+</head>
+<body>
+    <div id="kontener">
+        <div id="header">
+            <div id="logo">
+                <a href="index.html"><img src="logoorg.png" alt="logo"></a>
+            </div>
+            <div class="menu"><a href="index.html" id="duze">Witaj!</a></div>
+            <div class="menu" id="active"><a href="kontakt.html">Kontakt</a></div>
+            <div class="menu"><a href="jakpracuje.html">Jak pracuje</a></div>
+            
+        </div>
+        <div id="center-kontakt">
+            <div id="lewo">
+                <div id="kontakt-info1">
+                    <h2 class="tumnie">Tu mnie znajdziesz!</h2>
+                </div>
+                <div id="mapa">
+                    <iframe class="cien" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2104.635353484288!2d16.89967317453165!3d51.148166265395815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470feb3d9bd950ed%3A0xa368aab563e8bda4!2sZbiornik%20retencyjny!5e0!3m2!1spl!2spl!4v1700823515819!5m2!1spl!2spl" width="480" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div id="kontakt-info2">
+                    <h6 class="tytul">Email:</h6>
+                    <p class="tresc">zbiornikretencyjny@gmail.com</p>
+                    <h6 class="tytul">Telefon:</h6>
+                    <p class="tresc">112997313</p>
+                    <h6 class="tytul">Adres:</h6>
+                    <p class="tresc">Przesiecka 43, Wrocław pn-pt 9-17</p>
+                </div>
+            </div>
+            <div id="prawo">
+                <h2 id="tumnie">Chętnie odpowiem na pytania!</h2>
+                <div id="formularz-kontaktowy">
+                    <form action="serwer.php" method="post" enctype="multipart/form-data">
+                        <div class="input-group">
+                            <input type="text" id="imie" name="imie" placeholder="Imię" required>
+                            <input type="text" id="nazwisko" name="nazwisko" placeholder="Nazwisko" required>
+                        </div>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        <input type="tel" id="telefon" name="telefon" placeholder="Telefon">
+                        <textarea id="wiadomosc" name="wiadomosc" placeholder="Tutaj wpisz wiadomość" required></textarea>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="zgoda" name="zgoda">
+                            <label for="zgoda">Wyrażam zgodę na przesyłanie danych osobowych drogą elektroniczną.</label>
+                        </div>
+                        <div class="file-group">
+                            <label for="plik">Prześlij plik:</label>
+                            <input type="file" id="plik" name="plik">
+                        </div>
+                        <button type="submit" id="submit-btn">WYŚLIJ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
